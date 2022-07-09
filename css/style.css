@@ -31,6 +31,43 @@ body {
     padding: 20px;
 }
 
+.add-book-form {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid black;
+    font-size: 2em;
+    font-weight: 800;
+    background-color: #fdcb93;
+}
+
+.add-book-form > input {
+    width: 100%;
+    height: 30px;
+    border-radius: 10px;;
+    font-size: 0.8em;
+    font-weight: 500;
+}
+
+.form-submit-btn {
+    font-size: 0.8em;
+    border: black solid 1px;
+    border-radius: 10px;
+}
+
+.add-book-form-show {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+}
+
 /* Book card section */
 
 .main-section > .book-card {

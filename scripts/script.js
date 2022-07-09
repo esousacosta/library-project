@@ -29,40 +29,44 @@ function createNewBookCardButton(iText = "Read", iType = "button")
 
 function addBookCardToScreen()
 {
-    let aMainSectionDiv = document.querySelector(".main-section");
-    const aNewBookCardDiv = document.createElement("div");
-    const aNewBookCardTitleDiv = document.createElement("div");
-    const aNewBookCardAuthorDiv = document.createElement("div");
-    const aNewBookCardPagesCountDiv = document.createElement("div");
-    const aNewBookCardReadButton = createNewBookCardButton();
-    aNewBookCardReadButton.classList.add("read-btn");
-    const aNewBookCardRemoveButton = createNewBookCardButton("Remove");
-    aNewBookCardRemoveButton.classList.add("remove-btn");
+    this.textContent = this.textContent === "+" ? "X" : "+";
+    const aAddBookFormDiv = document.querySelector(".add-book-form");
+    aAddBookFormDiv.classList.toggle("add-book-form-show");
     
-    // Set classes for each div
-    aNewBookCardDiv.classList.add("book-card");
-    aNewBookCardTitleDiv.classList.add("book-title");
-    aNewBookCardAuthorDiv.classList.add("book-author");
-    aNewBookCardPagesCountDiv.classList.add("pages-count");
+    // let aMainSectionDiv = document.querySelector(".main-section");
+    // const aNewBookCardDiv = document.createElement("div");
+    // const aNewBookCardTitleDiv = document.createElement("div");
+    // const aNewBookCardAuthorDiv = document.createElement("div");
+    // const aNewBookCardPagesCountDiv = document.createElement("div");
+    // const aNewBookCardReadButton = createNewBookCardButton();
+    // aNewBookCardReadButton.classList.add("read-btn");
+    // const aNewBookCardRemoveButton = createNewBookCardButton("Remove");
+    // aNewBookCardRemoveButton.classList.add("remove-btn");
     
-    // Set text content for each div
-    aNewBookCardTitleDiv.textContent = "Head First Design Patterns Version";
-    aNewBookCardAuthorDiv.textContent = "I don't know";
-    aNewBookCardPagesCountDiv.textContent = "354";
+    // // Set classes for each div
+    // aNewBookCardDiv.classList.add("book-card");
+    // aNewBookCardTitleDiv.classList.add("book-title");
+    // aNewBookCardAuthorDiv.classList.add("book-author");
+    // aNewBookCardPagesCountDiv.classList.add("pages-count");
     
-    // Set the children of the main book card div
-    aNewBookCardDiv.appendChild(aNewBookCardTitleDiv);
-    aNewBookCardDiv.appendChild(aNewBookCardAuthorDiv);
-    aNewBookCardDiv.appendChild(aNewBookCardPagesCountDiv);
-    aNewBookCardDiv.appendChild(aNewBookCardReadButton);
-    aNewBookCardDiv.appendChild(aNewBookCardRemoveButton);
+    // // Set text content for each div
+    // aNewBookCardTitleDiv.textContent = "Head First Design Patterns";
+    // aNewBookCardAuthorDiv.textContent = "Freeman & Robson";
+    // aNewBookCardPagesCountDiv.textContent = "354";
     
-    const aLastBookCardDivInPage = aMainSectionDiv.lastElementChild;
-    aMainSectionDiv.insertBefore(aNewBookCardDiv, aLastBookCardDivInPage);
+    // // Set the children of the main book card div
+    // aNewBookCardDiv.appendChild(aNewBookCardTitleDiv);
+    // aNewBookCardDiv.appendChild(aNewBookCardAuthorDiv);
+    // aNewBookCardDiv.appendChild(aNewBookCardPagesCountDiv);
+    // aNewBookCardDiv.appendChild(aNewBookCardReadButton);
+    // aNewBookCardDiv.appendChild(aNewBookCardRemoveButton);
+    
+    // const aLastBookCardDivInPage = aMainSectionDiv.lastElementChild;
+    // aMainSectionDiv.insertBefore(aNewBookCardDiv, aLastBookCardDivInPage);
 }
 
 let aLibrary = new Library();
 
 let aAddButton = document.querySelector("#add-book-btn");
-aAddButton.addEventListener("click", addBookCardToScreen);
+aAddButton.addEventListener("click", addBookCardToScreen.bind(aAddButton));
 

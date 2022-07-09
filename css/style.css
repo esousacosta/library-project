@@ -88,6 +88,11 @@ body {
 
 .book-card > .book-title {
     font-size: 2em;
+    flex: 1 1 auto;
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .book-card > .book-author {

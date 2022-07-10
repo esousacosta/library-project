@@ -111,6 +111,10 @@ body {
     border-radius: 10px;
 }
 
+.book-card > .read-button {
+    background-color: #d6ffe9;
+}
+
 /* End of Book card section */
 
 .add-book-section {

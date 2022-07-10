@@ -21,9 +21,9 @@ class Book {
     }
 }
 
-function removeElementFromDOM(ioElementToBeRemoved)
-{
-    ioElementToBeRemoved.remove();
+function toggleBookCardReadUnreadButton(){
+    this.classList.toggle("read-button");
+    this.textContent = this.textContent === "Read" ? "Unread" : "Read";
 }
 
 function displayBookOnScreen(iBook)
@@ -35,6 +35,7 @@ function displayBookOnScreen(iBook)
     const aNewBookCardPagesCountDiv = document.createElement("div");
     const aNewBookCardReadButton = createNewBookCardButton();
     aNewBookCardReadButton.classList.add("read-btn");
+    aNewBookCardReadButton.addEventListener("click", toggleBookCardReadUnreadButton.bind(aNewBookCardReadButton));
     const aNewBookCardRemoveButton = createNewBookCardButton("Remove");
     aNewBookCardRemoveButton.classList.add("remove-btn");
 

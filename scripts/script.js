@@ -8,6 +8,11 @@ class Library {
         this.books.push(iBook);
     }
     
+    removeBookById(iBookId) {
+        const aBookToRemoveIndex = this.books.findIndex(aBook => aBook.id === iBookId.id);
+        this.books.splice(aBookToRemoveIndex, 1);
+    }
+    
 }
 
 class Book {
@@ -21,12 +26,13 @@ class Book {
     }
 }
 
-function toggleBookCardReadUnreadButton(){
+function toggleBookCardReadUnreadButton(oBook){
     this.classList.toggle("read-button");
     this.textContent = this.textContent === "Read" ? "Unread" : "Read";
+    oBook.read = !oBook.read;
 }
 
-function displayBookOnScreen(iBook)
+function displayBookOnScreen(iBook, ioLibrary)
 {
     let aMainSectionDiv = document.querySelector(".main-section");
     const aNewBookCardDiv = document.createElement("div");
@@ -35,7 +41,7 @@ function displayBookOnScreen(iBook)
     const aNewBookCardPagesCountDiv = document.createElement("div");
     const aNewBookCardReadButton = createNewBookCardButton();
     aNewBookCardReadButton.classList.add("read-btn");
-    aNewBookCardReadButton.addEventListener("click", toggleBookCardReadUnreadButton.bind(aNewBookCardReadButton));
+    aNewBookCardReadButton.addEventListener("click", toggleBookCardReadUnreadButton.bind(aNewBookCardReadButton, iBook));
     const aNewBookCardRemoveButton = createNewBookCardButton("Remove");
     aNewBookCardRemoveButton.classList.add("remove-btn");
 
@@ -46,6 +52,7 @@ function displayBookOnScreen(iBook)
     aNewBookCardPagesCountDiv.classList.add("pages-count");
 
     // Set text content for each div
+    aNewBookCardDiv.setAttribute("id", "div-" + iBook.id);
     aNewBookCardTitleDiv.textContent = iBook.title;
     aNewBookCardAuthorDiv.textContent = iBook.author;
     aNewBookCardPagesCountDiv.textContent = iBook.pages + " pages";
@@ -60,7 +67,9 @@ function displayBookOnScreen(iBook)
     const aLastBookCardDivInPage = aMainSectionDiv.lastElementChild;
     aMainSectionDiv.insertBefore(aNewBookCardDiv, aLastBookCardDivInPage);
 
-    aNewBookCardRemoveButton.addEventListener("click", () => {aNewBookCardDiv.remove()});
+    aNewBookCardRemoveButton.addEventListener("click", () => {
+        ioLibrary.removeBookById(iBook.id);
+        aNewBookCardDiv.remove()});
     
     const aAddButton = document.querySelector("#add-book-btn");
     addBookCardToScreen.call(aAddButton);
@@ -81,18 +90,18 @@ function addBookCardToScreen()
     aAddBookFormDiv.classList.toggle("add-book-form-show");
 }
 
-function addBookToLibrary(oLibrary)
+function addBookToLibrary(ioLibrary)
 {
     const aFormTitleInput = this.querySelector("#title-form-id");
     const aFormAuthorInput = this.querySelector("#author-form-id");
     const aFormPagesInput = this.querySelector("#pages-form-id");
 
     const aNewInputBook = new Book(aFormTitleInput.value, aFormAuthorInput.value, aFormPagesInput.value);
-    oLibrary.addBook(aNewInputBook);
+    ioLibrary.addBook(aNewInputBook);
     aFormAuthorInput.value = "";
     aFormTitleInput.value = "";
     aFormPagesInput.value = "";
-    displayBookOnScreen(aNewInputBook);
+    displayBookOnScreen(aNewInputBook, ioLibrary);
 }
 
 let aLibrary = new Library();

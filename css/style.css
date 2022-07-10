@@ -68,6 +68,11 @@ body {
     width: 300px;
 }
 
+.twist-plus-sign {
+    transform: rotate(45deg);
+    transition-duration: 0.5s;
+}
+
 /* Book card section */
 
 .main-section > .book-card {
@@ -128,9 +133,9 @@ body {
     height: 50px;
     font-size: 2.5em;
     background-color: #ffe5d6;
-    border: black solid 1px;
+    border: black solid 0px;
     border-radius: 50%;
-    box-shadow: 3px 3px 5px black;
+    box-shadow: 1px 1px 5px #e6b193;
     display: grid;
     grid-template-columns: 1fr;
     justify-items: center;

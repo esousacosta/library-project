@@ -85,7 +85,7 @@ function createNewBookCardButton(iText = "Read", iType = "button")
 
 function addBookCardToScreen()
 {
-    this.textContent = this.textContent === "+" ? "X" : "+";
+    this.classList.toggle("twist-plus-sign");
     const aAddBookFormDiv = document.querySelector(".add-book-form");
     aAddBookFormDiv.classList.toggle("add-book-form-show");
 }

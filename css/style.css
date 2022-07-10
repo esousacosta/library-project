@@ -12,8 +12,8 @@ body {
     align-items: center;
     padding-left: 20px;
     text-align: center;
-    height: 50px;
-    max-height: 100px;
+    height: 3em;
+    max-height: 200px;
     font-size: 2em;
     font-weight: 800;
     background-color: #fdcb93;
